@@ -1,14 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'MAVEN_HOME'
+    }
+
     stages {
-
-        stage('Welcome to home') {
-            steps {
-                echo 'Checking out source code...'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
@@ -26,12 +23,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
-
-        stage('Success') {
-            steps {
-                echo 'Build Completed Successfully!'
-            }
-        }
-
     }
 }
+
